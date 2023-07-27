@@ -12,7 +12,7 @@ const CardComponent = ({ nation, index }) => {
       }}
     >
       <CardContent sx={{ flexGrow: 1, textAlign: "center" }}>
-      <Typography gutterBottom variant="h6" align="center" component="h2">
+        <Typography gutterBottom variant="h6" align="center" component="h2">
           {nation.Nation}
         </Typography>
         <Typography>Year: {nation.Year}</Typography>

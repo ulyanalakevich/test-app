@@ -8,6 +8,4 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
   left: "0",
   right: "0",
   margin: 0,
-  width: "100%",
-  height: "auto",
 }));

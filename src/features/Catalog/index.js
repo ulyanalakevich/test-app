@@ -1,10 +1,11 @@
-import { Box, CssBaseline, Grid, Typography } from "@mui/material";
+import { Box, CssBaseline, Grid, List, Typography } from "@mui/material";
 import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNations, selectNations } from "./catalogSlice";
 import Header from "./Header";
 import CardComponent from "./CardComponent";
+import { CatalogGrid, StyledGrid } from "./styled";
 
 export default function Catalog() {
   const dispatch = useDispatch();
@@ -29,16 +30,9 @@ export default function Catalog() {
       </>
     );
   }
-  const favoriteNations = nations.filter(
-    (nation) => nation.isFavorite
-  );
-  const nonFavoriteNations = nations.filter(
-    (nation) => !nation.isFavorite
-  );
-  const sortedNations = [
-    ...favoriteNations,
-    ...nonFavoriteNations,
-  ];
+  const favoriteNations = nations.filter((nation) => nation.isFavorite);
+  const nonFavoriteNations = nations.filter((nation) => !nation.isFavorite);
+  const sortedNations = [...favoriteNations, ...nonFavoriteNations];
 
   return (
     <Box
@@ -53,21 +47,13 @@ export default function Catalog() {
     >
       <CssBaseline />
       <Header />
-      <Grid item maxWidth="md" sx={{ pt: 8 }}>
-        <Grid
-          container
-          spacing={4}
-          sx={{
-            justifyContent: "center",
-          }}
-        >
-          {sortedNations.map((nation, index) => (
-            <Grid item key={index} xs={12} sm={6} md={4}>
-              <CardComponent nation={nation} index={index} />
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
+      <StyledGrid spacing={2}>
+        {sortedNations.map((nation, index) => (
+          <Grid item key={index} xs={12} sm={6} md={4}>
+            <CardComponent nation={nation} index={index} />
+          </Grid>
+        ))}
+      </StyledGrid>
     </Box>
   );
 }

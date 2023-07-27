@@ -22,15 +22,13 @@ const catalogSlice = createSlice({
     },
     toggleFavorite: (state, action) => {
       const index = action.payload;
-      state.nations[index].isFavorite =
-        !state.nations[index].isFavorite;
+      state.nations[index].isFavorite = !state.nations[index].isFavorite;
     },
   },
 });
 
 export const selectNationsState = (state) => state.nations;
-export const selectNations = (state) =>
-  selectNationsState(state).nations;
+export const selectNations = (state) => selectNationsState(state).nations;
 export const {
   fetchNations,
   fetchNationsSuccess,
