@@ -1,40 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const catalogSlice = createSlice({
-  name: "universities",
+  name: "nations",
   initialState: {
-    universities: [],
+    nations: [],
     status: "loading",
   },
   reducers: {
-    fetchUniversities: (state, action) => {
-      state.universities = action.payload;
+    fetchNations: (state, action) => {
+      state.nations = action.payload;
     },
-    fetchUniversitiesSuccess: (state, action) => {
+    fetchNationsSuccess: (state, action) => {
       state.status = "success";
-      state.universities = action.payload.map((university) => ({
-        ...university,
+      state.nations = action.payload.map((nation) => ({
+        ...nation,
         isFavorite: false,
       }));
     },
-    fetchUniversitiesError: (state) => {
+    fetchNationsError: (state) => {
       state.status = "error";
     },
     toggleFavorite: (state, action) => {
       const index = action.payload;
-      state.universities[index].isFavorite =
-        !state.universities[index].isFavorite;
+      state.nations[index].isFavorite =
+        !state.nations[index].isFavorite;
     },
   },
 });
 
-export const selectUniversitiesState = (state) => state.universities;
-export const selectUniversities = (state) =>
-  selectUniversitiesState(state).universities;
+export const selectNationsState = (state) => state.nations;
+export const selectNations = (state) =>
+  selectNationsState(state).nations;
 export const {
-  fetchUniversities,
-  fetchUniversitiesSuccess,
-  fetchUniversitiesError,
+  fetchNations,
+  fetchNationsSuccess,
+  fetchNationsError,
   toggleFavorite,
 } = catalogSlice.actions;
 
