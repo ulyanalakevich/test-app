@@ -1,7 +1,7 @@
 import { Card, CardContent, Link, Typography } from "@mui/material";
 import Favorite from "../Favorite";
 
-const CardComponent = ({ university, index }) => {
+const CardComponent = ({ nation, index }) => {
   return (
     <Card
       sx={{
@@ -12,16 +12,13 @@ const CardComponent = ({ university, index }) => {
       }}
     >
       <CardContent sx={{ flexGrow: 1, textAlign: "center" }}>
-        <Typography gutterBottom variant="h6" align="center" component="h2">
-          {university.name}
+      <Typography gutterBottom variant="h6" align="center" component="h2">
+          {nation.Nation}
         </Typography>
-        <Typography>Country: {university.country}</Typography>
-
-        <Link href={university.web_pages[0]} target="_blank">
-          {university.web_pages[0]}
-        </Link>
+        <Typography>Year: {nation.Year}</Typography>
+        <Typography>Population: {nation.Population}</Typography>
       </CardContent>
-      <Favorite university={university} index={index} />
+      <Favorite nation={nation} index={index} />
     </Card>
   );
 };

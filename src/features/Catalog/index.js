@@ -2,19 +2,19 @@ import { Box, CssBaseline, Grid, Typography } from "@mui/material";
 import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUniversities, selectUniversities } from "./catalogSlice";
+import { fetchNations, selectNations } from "./catalogSlice";
 import Header from "./Header";
 import CardComponent from "./CardComponent";
 
 export default function Catalog() {
   const dispatch = useDispatch();
-  const universities = useSelector(selectUniversities);
+  const nations = useSelector(selectNations);
 
   useEffect(() => {
-    dispatch(fetchUniversities());
+    dispatch(fetchNations());
   }, [dispatch]);
 
-  if (!universities || universities.length === 0) {
+  if (!nations || nations.length === 0) {
     return (
       <>
         <CssBaseline />
@@ -29,15 +29,15 @@ export default function Catalog() {
       </>
     );
   }
-  const favoriteUniversities = universities.filter(
-    (university) => university.isFavorite
+  const favoriteNations = nations.filter(
+    (nation) => nation.isFavorite
   );
-  const nonFavoriteUniversities = universities.filter(
-    (university) => !university.isFavorite
+  const nonFavoriteNations = nations.filter(
+    (nation) => !nation.isFavorite
   );
-  const sortedUniversities = [
-    ...favoriteUniversities,
-    ...nonFavoriteUniversities,
+  const sortedNations = [
+    ...favoriteNations,
+    ...nonFavoriteNations,
   ];
 
   return (
@@ -61,9 +61,9 @@ export default function Catalog() {
             justifyContent: "center",
           }}
         >
-          {sortedUniversities.map((university, index) => (
+          {sortedNations.map((nation, index) => (
             <Grid item key={index} xs={12} sm={6} md={4}>
-              <CardComponent university={university} index={index} />
+              <CardComponent nation={nation} index={index} />
             </Grid>
           ))}
         </Grid>
