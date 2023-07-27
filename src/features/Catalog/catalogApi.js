@@ -1,7 +1,7 @@
 export async function getUniversities() {
   try {
     const response = await fetch(
-      "https://universities.hipolabs.com/search?country=United+States"
+      "http://universities.hipolabs.com/search?country=United+States"
     );
     if (!response.ok) {
       throw new Error("Failed to fetch data from the API.");
