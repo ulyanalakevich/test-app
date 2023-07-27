@@ -12,47 +12,28 @@ import {
 } from "./styled";
 import { useState } from "react";
 import FormButton from "../FormButton";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const Inputs = () => {
   const history = useHistory();
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-
-  const handleLogin = async () => {
-    try {
-      const response = await fetch("https://playground.tesonet.lt/v1/tokens", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: "tesonet",
-          password: "partyanimal",
-        }),
-      });
-
-      if (!response.ok) {
-        setError("Login failed. Please check your credentials.");
-        return;
-      }
-
-      const data = await response.json();
-      const token = data.token;
-      console.log("Login successful! Token:", token);
-      history.push('/catalog');
-    } catch (error) {
-      console.error("Error occurred during login:", error);
-      setError("An error occurred during login.");
+  const handleLogin = () => {
+    if (!username || !password) {
+      setError("Please enter both username and password.");
+      return;
     }
+    setError(null);
+    history.push("/catalog");
   };
 
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -114,12 +95,12 @@ const Inputs = () => {
           Forgot password?
         </Link>
       </Grid>
-      <FormButton handleLogin={handleLogin}/>
       {error && (
         <Grid item xs={12} sx={{ color: "error.main", mt: 2 }}>
           {error}
         </Grid>
       )}
+      <FormButton handleLogin={handleLogin} />
     </>
   );
 };
