@@ -10,7 +10,7 @@ import IconButton from "@mui/material/IconButton";
 
 import { styled } from "@mui/system";
 import { theme } from "../../theme";
-import SwitchComponent from "./switch";
+import SwitchComponent from "./Form/RememberMe/SwitchComponent";
 import { InputAdornment, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
 import Form from "./Form";
