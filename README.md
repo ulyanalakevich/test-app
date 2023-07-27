@@ -9,6 +9,10 @@ https://ulyanalakevich.github.io/test-app/
 
 The Sign In page allows users to enter their credentials and log in to the application. It consists of a form where users can input their username and password, and a list of social media links for alternative sign-in options. The background of the page displays a captivating image to enhance the user experience.
 
+## Catalog Page
+
+The Catalog component presents collection of universities in United States. It showcases university cards, each displaying information such as the university's name, country, and website link. Users can easily click on the website link to access more details. Additionally, users have the option to mark their favorite universities by clicking the "Add to favorites" button on each card. The component arranges the favorite universities at the beginning of the grid, offering a personalized experience to users. 
+
 ### Technologies Used
 
 - React: A popular JavaScript library for building user interfaces.
