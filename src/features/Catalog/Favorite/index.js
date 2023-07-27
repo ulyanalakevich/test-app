@@ -5,7 +5,7 @@ import { StyledIconButton } from "./styled";
 import { useDispatch } from "react-redux";
 import { toggleFavorite } from "../catalogSlice";
 
-const Favorite = ({ university, index }) => {
+const Favorite = ({ nation, index }) => {
   const dispatch = useDispatch();
   const handleToggleFavorite = (index) => {
     dispatch(toggleFavorite(index));
@@ -16,16 +16,16 @@ const Favorite = ({ university, index }) => {
       <StyledIconButton
         onClick={() => handleToggleFavorite(index)}
         sx={{
-          color: university.isFavorite ? "primary.contrastText" : "inherit",
+          color: nation.isFavorite ? "primary.contrastText" : "inherit",
         }}
       >
-        <StarIcon color={university.isFavorite ? "white" : "inherit"} />
+        <StarIcon color={nation.isFavorite ? "white" : "inherit"} />
         <Typography
           component="h5"
           sx={{
             fontSize: "fontSize.small",
             lineHeight: "lineHeight.small",
-            color: university.isFavorite ? "#fff" : "inherit",
+            color: nation.isFavorite ? "#fff" : "inherit",
             paddingLeft: "6px",
           }}
         >

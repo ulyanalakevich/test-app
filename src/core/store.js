@@ -8,7 +8,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    universities: catalogReducer,
+    nations: catalogReducer,
   },
   middleware: [sagaMiddleware],
 });

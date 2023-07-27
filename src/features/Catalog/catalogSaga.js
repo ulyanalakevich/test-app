@@ -1,20 +1,22 @@
 import { put, takeLatest, call } from "redux-saga/effects";
 import {
-  fetchUniversitiesSuccess,
-  fetchUniversitiesError,
-  fetchUniversities,
+  fetchNationsSuccess,
+  fetchNationsError,
+  fetchNations,
 } from "./catalogSlice";
-import { getUniversities } from "./catalogApi";
+import { getNations } from "./catalogApi";
 
-function* fetchUniversitiesHandler() {
+function* fetchNationsHandler() {
   try {
-    const universities = yield call(getUniversities);
-    yield put(fetchUniversitiesSuccess(universities.slice(0, 100)));
+    const nations
+ = yield call(getNations
+  );
+    yield put(fetchNationsSuccess(nations.slice(0, 100)));
   } catch (error) {
-    yield put(fetchUniversitiesError());
+    yield put(fetchNationsError());
   }
 }
 
 export function* catalogSaga() {
-  yield takeLatest(fetchUniversities.type, fetchUniversitiesHandler);
+  yield takeLatest(fetchNations.type, fetchNationsHandler);
 }
