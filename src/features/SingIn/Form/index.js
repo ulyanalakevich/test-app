@@ -22,7 +22,6 @@ const Form = () => {
       <Grid>
         <Inputs />
       </Grid>
-      <FormButton />
       <RememberMe />
     </Box>
   );
