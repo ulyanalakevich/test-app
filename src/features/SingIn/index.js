@@ -5,11 +5,11 @@ import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import BackgroundImage from "../../backgroundImage.jpg";
+import BackgroundImage from "./images/backgroundImage.jpg";
 import IconButton from "@mui/material/IconButton";
 
 import { styled } from "@mui/system";
-import { theme } from "../../theme";
+import { theme } from "../../core/theme";
 import SwitchComponent from "./Form/RememberMe/SwitchComponent";
 import { InputAdornment, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
