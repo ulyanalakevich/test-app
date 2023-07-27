@@ -37,12 +37,14 @@ export const theme = createTheme({
     fontWeightMedium: 500,
   },
   fontSize: {
+    xxsmall: "12px",
     xsmall: "14px",
     small: "16px",
     medium: "18px",
     large: "24px",
   },
   lineHeight: {
+    xxsmall: "16px",
     xsmall: "20px",
     small: "24px",
     large: "32px",
