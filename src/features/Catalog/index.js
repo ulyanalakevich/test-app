@@ -1,122 +1,147 @@
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import BackgroundImage from "../../backgroundImage.jpg";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Container,
+  CssBaseline,
+  Grid,
+  IconButton,
+  Link,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { useEffect, useState } from "react";
+import StarIcon from "@mui/icons-material/Star";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUniversities, selectUniversities, toggleFavorite } from "./catalogSlice";
+import styled from "@emotion/styled";
+
+const StyledIconButton = styled(IconButton)({
+  backgroundColor: "transparent", 
+  "&:hover": {
+    backgroundColor: "transparent", 
+  },
+  "&.Mui-active": {
+    backgroundColor: "transparent", 
+  },
+});
+
+const StyledContainer = styled(Container)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  position: "static",
+  top: "0px",
+  left: "0",
+right: "0",
+margin: 0,
+width: "100%",
+height: "auto"
+}))
+
 
 export default function Catalog() {
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const data = new FormData(event.currentTarget);
-      console.log({
-        email: data.get("email"),
-        password: data.get("password"),
-      });
-    };
-    return (
-      <Grid
-        container
-        component="main"
-      >
-        <CssBaseline />
-        <Grid item xs={12} sm={8} md={6} elevation={6}>
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Typography component="h1" variant="h5" color="common.white">
-              Sign in
-            </Typography>
-            <Box
-              component="form"
-              color="common.white"
-              noValidate
-              onSubmit={handleSubmit}
+  const dispatch = useDispatch();
+  const universities = useSelector(selectUniversities);
 
-            >
-              <TextField
-                margin="normal"
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoFocus
-                variant="outlined"
+  useEffect(() => {
+    dispatch(fetchUniversities());
+  }, [dispatch]);
 
-              />
-              <TextField
-                margin="normal"
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                variant="outlined"
+  const handleToggleFavorite = (index) => {
+    dispatch(toggleFavorite(index));
+  };
 
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  variant="outlined"
-                />
-              </Grid>
-            </Box>
-          </Box>
-        </Grid>
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={6}
-          sx={{
-            backgroundImage: `url(${BackgroundImage})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            position: "relative",
-          }}
-        ></Grid>
-      </Grid>
-    );
+  if (!universities || universities.length === 0) {
+    return <>
+    <CssBaseline/>
+    <Typography align="center" variant="h5" sx={{pt: 8}} color="common.white">Loading...</Typography>
+    </>
   }
-  
+  const favoriteUniversities = universities.filter(
+    (university) => university.isFavorite
+  );
+  const nonFavoriteUniversities = universities.filter(
+    (university) => !university.isFavorite
+  );
+  const sortedUniversities = [...favoriteUniversities, ...nonFavoriteUniversities];
+
+
+  return (
+    <Box
+      sx={{
+        backgroundSize: "cover",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <CssBaseline />
+      <StyledContainer >
+        <Typography
+          component="h1"
+          variant="h5"
+          align="center"
+          color="common.white"
+          gutterBottom
+          sx={{ pt: 6, pb: 6}}
+        >
+          Catalog
+        </Typography>
+      </StyledContainer>
+
+      <Grid item maxWidth="md" sx={{ pt: 8 }}>
+        <Grid container spacing={4}   sx={{
+    justifyContent: "center",
+ 
+  }}>
+          {sortedUniversities.map((university, index) => (
+            <Grid item key={index} xs={12} sm={6} md={4}>
+              <Card
+                sx={{
+                  width: "278px",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <CardContent sx={{ flexGrow: 1, textAlign: "center" }}>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    align="center"
+                    component="h2"
+                  >
+                    {university.name}
+                  </Typography>
+                  <Typography>Country: {university.country}</Typography>
+
+                  <Link href={university.web_pages[0]} target="_blank">
+                    {university.web_pages[0]}
+                  </Link>
+                </CardContent>
+                <CardActions sx={{ justifyContent: "center", bgcolor: "primary.main" }}>
+                  <StyledIconButton onClick={() => handleToggleFavorite(index)}
+                  sx={{  color: university.isFavorite ? "primary.contrastText" : "inherit" }}>
+                    <StarIcon color={university.isFavorite ? "white" : "inherit"}/>
+                   <Typography component="h5" sx={{
+                    fontSize: "fontSize.small",
+                    lineHeight: "lineHeight.small",
+                    color: university.isFavorite ? "#fff" : "inherit",
+                    paddingLeft: "6px"
+                   }}>
+                   Add to favorites
+                   </Typography>
+                  </StyledIconButton>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Grid>
+    </Box>
+  );
+}
