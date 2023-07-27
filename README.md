@@ -1,6 +1,9 @@
-# Sign In Page - University Catalog App 
+# Sign In - University Catalog App 
 
 This is a web application that includes two pages: the Sign In page and the Catalog page. The Sign In page allows users to log in to the application, while the Catalog page displays a catalog of universities. The app is built using React and Material-UI for the user interface.
+
+## DEMO
+https://ulyanalakevich.github.io/test-app/
 
 ## Sign In Page
 
