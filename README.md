@@ -45,6 +45,17 @@ The Catalog page consists of the following components:
 
 **API:** The University Catalog app fetches university data from the API provided by "http://universities.hipolabs.com/search?country=United+States" to display relevant information about universities in the United States.
 
+## Technologies
+- HTML (semantics, accesibility)
+- CSS 
+- JS ES6+
+- React
+- Redux (Toolkit, Saga)
+- Material UI
+- API fetch
+- GIT
+
+
 ## Available Scripts
 
 In the project directory, you can run:
