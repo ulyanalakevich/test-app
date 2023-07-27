@@ -1,14 +1,15 @@
 import { Button, Typography } from "@mui/material";
 import { ButtonText, StyledButton } from "./styled";
 
-const FormButton = ({theme}) => {
+const FormButton = ({handleLogin}) => {
 
 return (
   <Button
-      type="submit"
+      type="button"
       fullWidth
       variant="contained"
       sx={StyledButton}
+      onClick={handleLogin}
     >
       <Typography
         variant="body1"
