@@ -1,6 +1,6 @@
-# Sign In - University Catalog App 
+# Sign In - Nations Catalog App 
 
-This is a web application that includes two pages: the Sign In page and the Catalog page. The Sign In page allows users to log in to the application, while the Catalog page displays a catalog of universities. The app is built using React and Material-UI for the user interface.
+This is a web application that includes two pages: the Sign In page and the Catalog page. The Sign In page allows users to log in to the application, while the Catalog page displays a catalog of nations. The app is built using React and Material-UI for the user interface.
 
 ## DEMO
 https://ulyanalakevich.github.io/test-app/
@@ -11,7 +11,7 @@ The Sign In page allows users to enter their credentials and log in to the appli
 
 ## Catalog Page
 
-The Catalog component presents collection of universities in United States. It showcases university cards, each displaying information such as the university's name, country, and website link. Users can easily click on the website link to access more details. Additionally, users have the option to mark their favorite universities by clicking the "Add to favorites" button on each card. The component arranges the favorite universities at the beginning of the grid, offering a personalized experience to users. 
+The Catalog component presents a collection of nations and their population data. It showcases nation cards, each displaying information such as the nation's name, year, and population. Additionally, users have the option to mark their favorite nations by clicking the "Add to favorites" button on each card. The component arranges the favorite nations at the beginning of the grid, offering a personalized experience to users. 
 
 ### Technologies Used
 
@@ -35,15 +35,14 @@ The Sign In page consists of the following components:
 
 The Catalog page consists of the following components:
 
-1. **Header Component**: The Header component displays the title "Catalog" at the top of the page, fixed to the top as the user scrolls down. It serves as the header for the University Catalog app and provides a consistent user experience throughout the application.
-2. **CardComponent**: The CardComponent is a reusable component that displays detailed information about a university in a card format. It includes the university's name, country, and website link. Additionally, it contains the Favorite component to mark universities as favorites.
-
-3. **Favorite Component** : The Favorite component is responsible for rendering the favorite icon and text that allows users to mark a university as a favorite. When the icon is clicked, it triggers the toggleFavorite action from the Redux store, updating the university's isFavorite property accordingly.
+1. **Header Component**: The Header component displays the title "Catalog" at the top of the page, fixed to the top as the user scrolls down. It serves as the header for the Nations Catalog app and provides a consistent user experience throughout the application.
+2. **CardComponent**: The CardComponent is a reusable component that displays detailed information about a nation in a card format. It includes the nation's name, year, and populationk. Additionally, it contains the Favorite component to mark nations as favorites.
+3. **Favorite Component** : The Favorite component is responsible for rendering the favorite icon and text that allows users to mark a nation as a favorite. When the icon is clicked, it triggers the toggleFavorite action from the Redux store, updating the nation's isFavorite property accordingly.
 
 
 **Figma Design:** The user interface and visual design for the Sing In page was created using Figma.
 
-**API:** The University Catalog app fetches university data from the API provided by "http://universities.hipolabs.com/search?country=United+States" to display relevant information about universities in the United States.
+**API:** The Nations Catalog app fetches data from the API provided by "https://datausa.io/api/data?drilldowns=Nation&measures=Population" to display relevant information about nations.
 
 ## Technologies
 - HTML (semantics, accesibility)
