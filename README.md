@@ -11,7 +11,7 @@ The Sign In page allows users to enter their credentials and log in to the appli
 
 ## Catalog Page
 
-The Catalog component presents a collection of nations and their population data. It showcases nation cards, each displaying information such as the nation's name, year, and population. Additionally, users have the option to mark their favorite nations by clicking the "Add to favorites" button on each card. The component arranges the favorite nations at the beginning of the grid, offering a personalized experience to users. 
+The Catalog page presents a collection of nations and their population data. It showcases nation cards, each displaying information such as the nation's name, year, and population. Additionally, users have the option to mark their favorite nations by clicking the "Add to favorites" button on each card. The component arranges the favorite nations at the beginning of the grid, offering a personalized experience to users. 
 
 ### Technologies Used
 
@@ -36,7 +36,7 @@ The Sign In page consists of the following components:
 The Catalog page consists of the following components:
 
 1. **Header Component**: The Header component displays the title "Catalog" at the top of the page, fixed to the top as the user scrolls down. It serves as the header for the Nations Catalog app and provides a consistent user experience throughout the application.
-2. **CardComponent**: The CardComponent is a reusable component that displays detailed information about a nation in a card format. It includes the nation's name, year, and populationk. Additionally, it contains the Favorite component to mark nations as favorites.
+2. **Card Component**: The CardComponent is a reusable component that displays detailed information about a nation in a card format. It includes the nation's name, year, and populationk. Additionally, it contains the Favorite component to mark nations as favorites.
 3. **Favorite Component** : The Favorite component is responsible for rendering the favorite icon and text that allows users to mark a nation as a favorite. When the icon is clicked, it triggers the toggleFavorite action from the Redux store, updating the nation's isFavorite property accordingly.
 
 
