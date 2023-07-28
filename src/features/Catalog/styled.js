@@ -11,7 +11,7 @@ export const StyledGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     gridTemplateColumns: "repeat(1, 1fr)",
   },
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.between("sm", "lg")]: {
     gridTemplateColumns: "repeat(2, 1fr)",
   },
 }));
