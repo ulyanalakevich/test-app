@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from "nanoid";
 
 const catalogSlice = createSlice({
   name: "nations",
@@ -14,6 +15,7 @@ const catalogSlice = createSlice({
       state.status = "success";
       state.nations = action.payload.map((nation) => ({
         ...nation,
+        id: nanoid(), 
         isFavorite: false,
       }));
     },
@@ -21,10 +23,13 @@ const catalogSlice = createSlice({
       state.status = "error";
     },
     toggleFavorite: (state, action) => {
-      const index = action.payload;
-      state.nations[index].isFavorite = !state.nations[index].isFavorite;
-    },
+        const { id } = action.payload;
+        const nation = state.nations.find((nation) => nation.id === id);
+        if (nation) {
+          nation.isFavorite = !nation.isFavorite;
+        }
   },
+}
 });
 
 export const selectNationsState = (state) => state.nations;
