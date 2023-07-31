@@ -33,8 +33,7 @@ const Inputs = () => {
     event.preventDefault();
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const handleLogin = async () => {
     if (!username || !password) {
       setError("Please enter both username and password.");
       return;
