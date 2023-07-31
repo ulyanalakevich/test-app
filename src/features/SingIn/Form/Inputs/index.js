@@ -1,8 +1,10 @@
 import {
+  Box,
   Grid,
   IconButton,
   InputAdornment,
   Link,
+  Typography,
   useMediaQuery,
 } from "@mui/material";
 import {
@@ -13,9 +15,13 @@ import {
 import { useState } from "react";
 import FormButton from "../FormButton";
 import { useHistory } from "react-router-dom";
+import { login, loginSuccess } from "../../authSlice";
+import { useDispatch } from "react-redux";
+import { loginAPI } from "../../authApi";
 
 const Inputs = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [username, setUsername] = useState("");
@@ -27,13 +33,24 @@ const Inputs = () => {
     event.preventDefault();
   };
 
-  const handleLogin = () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     if (!username || !password) {
       setError("Please enter both username and password.");
       return;
     }
+
     setError(null);
-    history.push("/catalog");
+
+    try {
+      const token = await loginAPI(username, password);
+      dispatch(loginSuccess({ token }));
+      history.push("/catalog");
+    } catch (error) {
+      setError("Invalid username or password.");
+    }
+    setUsername("");
+    setPassword("");
   };
 
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -96,8 +113,8 @@ const Inputs = () => {
         </Link>
       </Grid>
       {error && (
-        <Grid item xs={12} sx={{ color: "error.main", mt: 2 }}>
-          {error}
+        <Grid item xs={12}>
+          <Typography sx={{ color: "error.main", mt: 2 }}>{error}</Typography>
         </Grid>
       )}
       <FormButton handleLogin={handleLogin} />
