@@ -50,6 +50,6 @@ export const theme = createTheme({
     large: "32px",
   },
   shape: {
-    borderRadius: "16px",
+    borderRadius: 16,
   },
 });
