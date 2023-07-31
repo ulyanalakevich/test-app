@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loginAPI } from "./authApi";
 
 const initialState = {
   token: null,
@@ -23,4 +24,15 @@ const authSlice = createSlice({
 });
 
 export const { loginRequest, loginSuccess, loginFailure } = authSlice.actions;
+
+export const login = (username, password) => async (dispatch) => {
+  dispatch(loginRequest());
+  try {
+    const token = await loginAPI(username, password);
+    dispatch(loginSuccess({ token, username, password }));
+  } catch (error) {
+    dispatch(loginFailure(error.toString()));
+  }
+};
+
 export default authSlice.reducer;
