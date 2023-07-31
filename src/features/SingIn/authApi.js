@@ -6,8 +6,8 @@ export const loginAPI = async (username, password) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            username: "tesonet",
-            password: "partyanimal",
+          username: username,
+          password: password,
         }),
       });
   

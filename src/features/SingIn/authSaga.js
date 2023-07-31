@@ -5,7 +5,7 @@ import { loginAPI } from "./authApi";
 function* fetchLoginHandler(action) {
   try {
     const token = yield call(loginAPI, action.payload.username, action.payload.password);
-    yield put(loginSuccess(token));
+    yield put(loginSuccess({ token, username: action.payload.username, password: action.payload.password }));
   } catch (error) {
     yield put(loginFailure(error.toString()));
   }
