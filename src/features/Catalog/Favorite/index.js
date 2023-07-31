@@ -7,8 +7,8 @@ import { toggleFavorite } from "../catalogSlice";
 
 const Favorite = ({ nation, index }) => {
   const dispatch = useDispatch();
-  const handleToggleFavorite = (index) => {
-    dispatch(toggleFavorite(index));
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite({ id: nation.id }));
   };
 
   return (
