@@ -63,7 +63,7 @@ const Inputs = () => {
           autoFocus
           id="email"
           name="email"
-          sx={{ marginBottom: "16px" }}
+          sx={{ mb: "16px" }}
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
