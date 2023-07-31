@@ -32,6 +32,7 @@ const catalogSlice = createSlice({
 }
 });
 
+export const selectToken = (state) => state.auth.token;
 export const selectNationsState = (state) => state.nations;
 export const selectNations = (state) => selectNationsState(state).nations;
 export const {
