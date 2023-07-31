@@ -1,5 +1,5 @@
 export const StyledButton = {
-    mt: 3,
+    mt: 4,
     mb: 2,
     bgcolor: "primary.electricBlue",
     height: "56px",

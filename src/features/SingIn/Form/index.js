@@ -4,7 +4,7 @@ import RememberMe from "./RememberMe";
 
 const Form = () => {
   return (
-    <Box>
+    <Box sx={{ mt: 6 }}>
       <Grid>
         <Inputs />
       </Grid>
