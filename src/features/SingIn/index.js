@@ -13,7 +13,7 @@ export default function SignIn() {
     <Grid
       container
       component="main"
-      sx={{ height: "100vh", color: "primary.main" }}
+      sx={{ height: "100%", overflow: "hidden", color: "primary.main" }}
     >
       <CssBaseline />
       <Grid item xs={12} sm={8} md={6}>
@@ -31,11 +31,11 @@ export default function SignIn() {
             component="h1"
             variant="h5"
             color="common.white"
-            sx={{ mb: 6, mt: 4 }}
+            sx={{ mt: 4 }}
           >
             Sign in
           </Typography>
-          <Form />
+          <Form/>
           <SocialMediaList />
         </Box>
       </Grid>
